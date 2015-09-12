@@ -1,0 +1,6 @@
+framework module FGTranslator {
+  umbrella header "FGTranslator-umbrella.h"
+
+  export *
+  module * { export * }
+}
