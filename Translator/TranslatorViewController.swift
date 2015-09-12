@@ -16,23 +16,17 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     @IBOutlet weak var translationTextField: UITextField!
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var toButton: UIButton!
-    @IBOutlet weak var detectionErrorLabel: UILabel!
     @IBOutlet weak var langChangeHintLabel: UILabel!
     @IBOutlet weak var translationProgressActivityIndicator: UIActivityIndicatorView!
     
     var translator = Translator()
     var internetConnectivityAvailable = true
+    var internetReachability = Reachability.reachabilityForInternetConnection()
     
     override func viewDidLoad() {
         self.setTitles()
         self.setupGradient()
-        let internetReachability = Reachability.reachabilityForInternetConnection()
         internetReachability.startNotifier()
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: "reachabilityChanged:",
-            name: kReachabilityChangedNotification,
-            object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -127,11 +121,12 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     }
     
     @IBAction func inputTextFieldEditingChanged(sender: UITextField) {
-        self.detectionErrorLabel.text = ""
+        self.checkReachabilityStatus()
+        
         if(internetConnectivityAvailable) {
             self.translator.detectLanguage(sender.text, customCompletion: { (err: NSError!, detectedSource: String!, confidence: Float) -> Void in
                 if(err != nil) {
-                    self.detectionErrorLabel.text = err.localizedDescription
+                    NSLog("Detection failed", err.localizedDescription)
                     return
                 } else {
                     self.translator.defSource = detectedSource
@@ -160,6 +155,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.rotateInputField()
+        self.checkReachabilityStatus()
         
         if(internetConnectivityAvailable) {
             self.translationProgressActivityIndicator.startAnimating()
@@ -183,20 +179,16 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     
 // MARK services methods
     
-    private func reachabilityChanged(notice: NSNotification) {
-        let reach = notice.object as? Reachability
-        if let remoteHostStatus = reach?.currentReachabilityStatus()
+    private func checkReachabilityStatus() {
+        if(internetReachability.currentReachabilityStatus().value == NotReachable.value)
         {
-            if(remoteHostStatus.value == NotReachable.value)
-            {
-                internetConnectivityAvailable = false
-                errorLabel.text = "Cannot connect to the server. Please check your internet connection"
-            }
-            else
-            {
-                internetConnectivityAvailable = true
-                errorLabel.text = ""
-            }
+            internetConnectivityAvailable = false
+            errorLabel.text = "Cannot connect to the server. Please check your internet connection"
+        }
+        else
+        {
+            internetConnectivityAvailable = true
+            errorLabel.text = ""
         }
     }
     
