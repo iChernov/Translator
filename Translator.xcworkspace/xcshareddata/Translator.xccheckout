@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5C982EFC-5032-4809-AE5B-214EE2AED8DA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Translator</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2EEE3071DE74E652FB3BABB0ADF59C9033A1E191</key>
+		<string>https://github.com/iChernov/Translator.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Translator.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2EEE3071DE74E652FB3BABB0ADF59C9033A1E191</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/iChernov/Translator.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2EEE3071DE74E652FB3BABB0ADF59C9033A1E191</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2EEE3071DE74E652FB3BABB0ADF59C9033A1E191</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Translator</string>
+		</dict>
+	</array>
+</dict>
+</plist>

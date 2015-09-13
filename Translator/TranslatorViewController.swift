@@ -9,7 +9,7 @@
 import UIKit
 import CZPicker
 
-class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, CZPickerViewDataSource, CZPickerViewDelegate {
+class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, CZPickerViewDataSource, CZPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var gradientView: GradientView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -24,6 +24,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     var internetConnectivityAvailable = true
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var langList = [String]()
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         self.setTitles()
