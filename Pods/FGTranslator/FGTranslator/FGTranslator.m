@@ -138,12 +138,6 @@ float const FGTranslatorUnknownConfidence = -1;
         completion(error, nil, nil);
         return;
     }
-    else if (self.translatorState == FGTranslatorStateCompleted)
-    {
-        NSError *error = [self errorWithCode:FGTranslatorErrorAlreadyTranslated description:@"translation already completed"];
-        completion(error, nil, nil);
-        return;
-    }
     else
     {
         self.translatorState = FGTranslatorStateInProgress;
@@ -238,12 +232,6 @@ float const FGTranslatorUnknownConfidence = -1;
         completion(error, nil, 0);
         return;
     }
-    else if (self.translatorState == FGTranslatorStateCompleted)
-    {
-        NSError *error = [self errorWithCode:FGTranslatorErrorAlreadyTranslated description:@"detection already completed"];
-        completion(error, nil, 0);
-        return;
-    }
     else
     {
         self.translatorState = FGTranslatorStateInProgress;
@@ -321,12 +309,6 @@ float const FGTranslatorUnknownConfidence = -1;
     if (self.translatorState == FGTranslatorStateInProgress)
     {
         NSError *error = [self errorWithCode:FGTranslatorErrorTranslationInProgress description:@"detection already in progress"];
-        completion(error, nil);
-        return;
-    }
-    else if (self.translatorState == FGTranslatorStateCompleted)
-    {
-        NSError *error = [self errorWithCode:FGTranslatorErrorAlreadyTranslated description:@"detection already completed"];
         completion(error, nil);
         return;
     }

@@ -9,7 +9,7 @@
 import UIKit
 import CZPicker
 
-class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, CZPickerViewDataSource, CZPickerViewDelegate {
+class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CZPickerViewDataSource, CZPickerViewDelegate {
 
     @IBOutlet var gradientView: GradientView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -19,13 +19,16 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     @IBOutlet weak var toButton: UIButton!
     @IBOutlet weak var langChangeHintLabel: UILabel!
     @IBOutlet weak var translationProgressActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     var translator = Translator()
     var internetConnectivityAvailable = true
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var langList = [String]()
-    
+    var imagePicker = UIImagePickerController()
+
     override func viewDidLoad() {
+        self.backgroundImageView.alpha = 0.0
         self.setTitles()
         self.setupGradient()
         internetReachability.startNotifier()
@@ -50,6 +53,12 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
         gradientView.gradient = initialValue
     }
     
+    private func setupWhiteBackground() {
+        let whiteColor = UIColor(white: 1.0, alpha: 1.0)
+        let whiteValue = CenterColorGradient(centerColor: whiteColor, hueVariance: 0.0)
+        gradientView.gradient = whiteValue
+    }
+    
     private func removeHints() {
         self.delay(3, closure: { () -> () in
             UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -66,11 +75,20 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     }
     
     private func presentImagePicker() {
-        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion:{ () -> Void in
+                    self.setupWhiteBackground()
+            })
+        }
     }
     
     private func presentGradientPicker() {
-        
+        self.backgroundImageView.alpha = 0.0
     }
     
     private func blinkGreen() {
@@ -128,6 +146,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
         if(internetConnectivityAvailable) {
             self.translator.detectLanguage(sender.text, customCompletion: { (err: NSError!, detectedSource: String!, confidence: Float) -> Void in
                 if(err != nil) {
+                    NSLog("Detection failed", err.localizedDescription)
                     return
                 } else {
                     self.translator.defSource = detectedSource
@@ -209,6 +228,20 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int) {
         self.translator.defTarget = LangUnwrapper.getCode(self.langList[row])
         self.setTitles()
+        self.textFieldShouldReturn(self.inputTextField)
+    }
+    
+// MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+        })
+        
+        self.backgroundImageView.image = image
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.backgroundImageView.alpha = 0.85
+        })
     }
     
 // MARK: services methods
