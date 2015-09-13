@@ -11,7 +11,7 @@ import CZPicker
 
 class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, CZPickerViewDataSource, CZPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet var gradientView: GradientView!
+    @IBOutlet var gradientView: UIGradientView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var translationTextField: UITextField!
@@ -25,6 +25,8 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     var internetReachability = Reachability.reachabilityForInternetConnection()
     var langList = [String]()
     var imagePicker = UIImagePickerController()
+    var topGradientColor = UIColor(red: 0.0, green: 1.0, blue: 0.1, alpha: 0.5)
+    var bottomGradientColor = UIColor(red: 0.0, green: 0.1, blue: 1.0, alpha: 0.5)
     
     override func viewDidLoad() {
         self.setTitles()
@@ -46,9 +48,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
 // MARK: custom UI changes
     
     private func setupGradient() {
-        let initialCenter = UIColor(hue: 0.45, saturation: 0.5, brightness: 0.9, alpha: 0.5)
-        let initialValue = CenterColorGradient(centerColor: initialCenter, hueVariance: 0.2)
-        gradientView.gradient = initialValue
+        self.gradientView.setGradientColors(topGradientColor, c2: bottomGradientColor)
     }
     
     private func removeHints() {
@@ -67,7 +67,14 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     }
     
     private func presentImagePicker() {
-        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion:nil)
+        }
     }
     
     private func presentGradientPicker() {
@@ -80,7 +87,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
             self.inputTextField.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.7)
             }, completion: { (completed: Bool) -> Void in
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.inputTextField.backgroundColor = UIColor.whiteColor()
+                    self.inputTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.75)
                 })
         })
     }
@@ -91,7 +98,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
             self.inputTextField.backgroundColor = UIColor(red: 1, green: 0.65, blue: 0, alpha: 0.7)
             }, completion: { (completed: Bool) -> Void in
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.inputTextField.backgroundColor = UIColor.whiteColor()
+                    self.inputTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.75)
                 })
         })
     }
@@ -210,6 +217,25 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int) {
         self.translator.defTarget = LangUnwrapper.getCode(self.langList[row])
         self.setTitles()
+    }
+    
+// MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+       /* var context: CGContextRef = UIGraphicsGetCurrentContext();
+        var imageRect = self.view.frame;
+        
+        CGContextTranslateCTM(context, 0, image.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+        
+        CGContextDrawImage(context, imageRect, image.CGImage);
+        CGContextRestoreGState(context);*/
+        
+        self.gradientView.startColor = nil
+        self.gradientView.endColor = nil
+        self.gradientView.setBackgroundImage(image)
+
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 // MARK: services methods

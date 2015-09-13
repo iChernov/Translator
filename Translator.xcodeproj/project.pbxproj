@@ -8,16 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		625D40859954735036F3E571 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634C25D751FEFF1D541C9D44 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		761475EF1BA5C01600A070F0 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761475EE1BA5C01600A070F0 /* UIGradientView.swift */; };
 		7653E8551BA4922F0033055D /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8541BA4922F0033055D /* Translator.swift */; };
 		7653E85D1BA4B3170033055D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7653E85C1BA4B3170033055D /* Reachability.m */; };
-		7653E87E1BA4C3240033055D /* CenterColorGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8741BA4C3240033055D /* CenterColorGradient.swift */; };
-		7653E87F1BA4C3240033055D /* CenterColorGradientBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8751BA4C3240033055D /* CenterColorGradientBuilder.swift */; };
-		7653E8801BA4C3240033055D /* GradientBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8761BA4C3240033055D /* GradientBuilder.swift */; };
-		7653E8811BA4C3240033055D /* GradientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8771BA4C3240033055D /* GradientType.swift */; };
-		7653E8821BA4C3240033055D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8781BA4C3240033055D /* GradientView.swift */; };
-		7653E8841BA4C3240033055D /* Pan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E87A1BA4C3240033055D /* Pan.swift */; };
-		7653E8851BA4C3240033055D /* TouchGradientPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E87C1BA4C3240033055D /* TouchGradientPicker.swift */; };
-		7653E8861BA4C3240033055D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E87D1BA4C3240033055D /* UIColorExtensions.swift */; };
 		7653E88A1BA563200033055D /* LanguageCodesUnwrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8891BA563200033055D /* LanguageCodesUnwrapper.swift */; };
 		7653E88B1BA563200033055D /* LanguageCodesUnwrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8891BA563200033055D /* LanguageCodesUnwrapper.swift */; };
 		76965C3D1BA375F600283A3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76965C3C1BA375F600283A3B /* AppDelegate.swift */; };
@@ -41,19 +34,11 @@
 /* Begin PBXFileReference section */
 		634C25D751FEFF1D541C9D44 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		742349BF3BFA14E7ACBB2790 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		761475EE1BA5C01600A070F0 /* UIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGradientView.swift; sourceTree = "<group>"; };
 		7653E8541BA4922F0033055D /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		7653E85A1BA4B3160033055D /* Translator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Translator-Bridging-Header.h"; sourceTree = "<group>"; };
 		7653E85B1BA4B3170033055D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		7653E85C1BA4B3170033055D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		7653E8741BA4C3240033055D /* CenterColorGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterColorGradient.swift; sourceTree = "<group>"; };
-		7653E8751BA4C3240033055D /* CenterColorGradientBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterColorGradientBuilder.swift; sourceTree = "<group>"; };
-		7653E8761BA4C3240033055D /* GradientBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientBuilder.swift; sourceTree = "<group>"; };
-		7653E8771BA4C3240033055D /* GradientType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientType.swift; sourceTree = "<group>"; };
-		7653E8781BA4C3240033055D /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		7653E87A1BA4C3240033055D /* Pan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pan.swift; sourceTree = "<group>"; };
-		7653E87B1BA4C3240033055D /* TouchGradientPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchGradientPicker.h; sourceTree = "<group>"; };
-		7653E87C1BA4C3240033055D /* TouchGradientPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchGradientPicker.swift; sourceTree = "<group>"; };
-		7653E87D1BA4C3240033055D /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		7653E8891BA563200033055D /* LanguageCodesUnwrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCodesUnwrapper.swift; sourceTree = "<group>"; };
 		76965C371BA375F600283A3B /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76965C3B1BA375F600283A3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,7 +75,7 @@
 		7653E8521BA491780033055D /* UI customization */ = {
 			isa = PBXGroup;
 			children = (
-				7653E8731BA4C3240033055D /* TouchGradientPicker */,
+				761475EE1BA5C01600A070F0 /* UIGradientView.swift */,
 			);
 			name = "UI customization";
 			sourceTree = "<group>";
@@ -112,22 +97,6 @@
 				7653E85A1BA4B3160033055D /* Translator-Bridging-Header.h */,
 			);
 			name = Tools;
-			sourceTree = "<group>";
-		};
-		7653E8731BA4C3240033055D /* TouchGradientPicker */ = {
-			isa = PBXGroup;
-			children = (
-				7653E8741BA4C3240033055D /* CenterColorGradient.swift */,
-				7653E8751BA4C3240033055D /* CenterColorGradientBuilder.swift */,
-				7653E8761BA4C3240033055D /* GradientBuilder.swift */,
-				7653E8771BA4C3240033055D /* GradientType.swift */,
-				7653E8781BA4C3240033055D /* GradientView.swift */,
-				7653E87A1BA4C3240033055D /* Pan.swift */,
-				7653E87B1BA4C3240033055D /* TouchGradientPicker.h */,
-				7653E87C1BA4C3240033055D /* TouchGradientPicker.swift */,
-				7653E87D1BA4C3240033055D /* UIColorExtensions.swift */,
-			);
-			path = TouchGradientPicker;
 			sourceTree = "<group>";
 		};
 		76965C2E1BA375F600283A3B = {
@@ -361,18 +330,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7653E88A1BA563200033055D /* LanguageCodesUnwrapper.swift in Sources */,
-				7653E87E1BA4C3240033055D /* CenterColorGradient.swift in Sources */,
-				7653E8861BA4C3240033055D /* UIColorExtensions.swift in Sources */,
-				7653E8821BA4C3240033055D /* GradientView.swift in Sources */,
-				7653E8851BA4C3240033055D /* TouchGradientPicker.swift in Sources */,
 				7653E8551BA4922F0033055D /* Translator.swift in Sources */,
 				76965C3F1BA375F600283A3B /* TranslatorViewController.swift in Sources */,
 				76965C3D1BA375F600283A3B /* AppDelegate.swift in Sources */,
-				7653E8801BA4C3240033055D /* GradientBuilder.swift in Sources */,
-				7653E87F1BA4C3240033055D /* CenterColorGradientBuilder.swift in Sources */,
+				761475EF1BA5C01600A070F0 /* UIGradientView.swift in Sources */,
 				7653E85D1BA4B3170033055D /* Reachability.m in Sources */,
-				7653E8811BA4C3240033055D /* GradientType.swift in Sources */,
-				7653E8841BA4C3240033055D /* Pan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
