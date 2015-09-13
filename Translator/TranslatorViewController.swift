@@ -91,11 +91,13 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
         self.colorPicker.didChangeColorBlock = { (color: UIColor!) -> Void in
             if(self.selectedPickerButton != nil) {
                 if(self.selectedPickerButton! == self.upperColorPickerButton) {
-                    self.topGradientColor = color
+                    var components = CGColorGetComponents(color.CGColor);
+                    self.topGradientColor = UIColor(red: components[0], green: components[1], blue: components[2], alpha: 0.5)
                     self.setupGradient()
                 }
                 if(self.selectedPickerButton! == self.lowerColorPickerButton) {
-                    self.bottomGradientColor = color
+                    var components = CGColorGetComponents(color.CGColor);
+                    self.bottomGradientColor = UIColor(red: components[0], green: components[1], blue: components[2], alpha: 0.5)
                     self.setupGradient()
                 }
             }

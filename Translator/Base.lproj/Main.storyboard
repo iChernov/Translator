@@ -166,9 +166,6 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLR-rK-xoJ" userLabel="colorPickerContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-Hc-yif" customClass="NKOColorPickerView">
-                                        <rect key="frame" x="0.0" y="100" width="320" height="280"/>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Va-lf-bGX" userLabel="upperButton">
                                         <rect key="frame" x="60" y="54" width="200" height="30"/>
                                         <subviews>
@@ -269,6 +266,9 @@
                                                 <integer key="value" value="3"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-Hc-yif" customClass="NKOColorPickerView">
+                                        <rect key="frame" x="0.0" y="100" width="320" height="280"/>
                                     </view>
                                 </subviews>
                                 <constraints>

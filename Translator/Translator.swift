@@ -22,8 +22,8 @@ class Translator {
     var langListLoaded = false
     
     init() {
-        FGTranslator.flushCache()
-        FGTranslator.flushCredentials()
+        //FGTranslator.flushCache() - we can use it to remove user's history every time the app relaunches
+        //FGTranslator.flushCredentials() - in future could be used to erase credentials, if needed
         defSource = nil
         translator = FGTranslator(bingAzureClientId: kAZ_KEY, secret: kAZ_SECRET)
         self.loadSupportLanguages(1, completion:nil)
