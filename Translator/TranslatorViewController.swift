@@ -28,7 +28,6 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     var imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
-        self.backgroundImageView.alpha = 0.0
         self.setTitles()
         self.setupGradient()
         internetReachability.startNotifier()
@@ -97,7 +96,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
             self.inputTextField.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.7)
             }, completion: { (completed: Bool) -> Void in
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.inputTextField.backgroundColor = UIColor.whiteColor()
+                    self.inputTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.75)
                 })
         })
     }
@@ -114,11 +113,13 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     }
     
     private func rotateInputField() {
-        UIView.animateWithDuration(0.4, delay: 0, options: .Autoreverse, animations: { () -> Void in
-        self.inputTextField.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI),0.0,1.0,0.0)
-        }, completion: { (completed: Bool) -> Void in
-        self.inputTextField.layer.transform = CATransform3DMakeRotation(0,0.0,1.0,0.0)
-        })
+        var rotation = CABasicAnimation(keyPath: "transform.rotation.y")
+        rotation.fromValue = 0
+        rotation.toValue = 2*M_PI
+        rotation.repeatCount = 1
+        rotation.duration = 5.5
+        self.inputTextField.layer.addAnimation(rotation, forKey: "rotation")
+       
     }
     
 // MARK: UI interactions methods
@@ -205,13 +206,10 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
                     return
                 } else {
                     self.blinkGreen()
-                    self.translationTextField.hidden = false
                     self.translationTextField.text = translation
                 }
             })
         }
-        
-        textField.resignFirstResponder()
         return true
     }
     
@@ -240,7 +238,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
         
         self.backgroundImageView.image = image
         UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.backgroundImageView.alpha = 0.85
+            self.backgroundImageView.alpha = 1
         })
     }
     
