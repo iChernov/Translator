@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CZPicker-CZPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CZPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FGTranslator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,17 +42,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>631043CD8ACBD4D6A75B71A39390FCE8</key>
+		<key>3F69130335F2DC8ECE45BE3CEE829F06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE46DFE5AE7ACD939DCD8D5371C95966</key>
+		<key>5D3C50C9544D8A82A96DD827B04B83E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F2AEA8C17EE8CB764FA4AF2B9550388E</key>
+		<key>772076A46895D08F1D1EC2C966D13449</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88003144547CC032BFCFABEDDA79157C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A34DC36CB3D2A0C0015A03615CA19E19</key>
 		<dict>
 			<key>primary</key>
 			<true/>

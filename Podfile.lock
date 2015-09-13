@@ -20,12 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - CZPicker (0.3.6)
   - FGTranslator (1.1.2):
     - AFNetworking
     - TMCache
   - TMCache (2.1.0)
 
 DEPENDENCIES:
+  - CZPicker
   - FGTranslator (from `https://github.com/iChernov/FGTranslator.git`)
 
 EXTERNAL SOURCES:
@@ -39,6 +41,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  CZPicker: bf966778ebd3af6c291b4a4190d08a0e2c5c6974
   FGTranslator: fef479f75ec0a56e4ad1b5c2668ce9ab4e1ae597
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 

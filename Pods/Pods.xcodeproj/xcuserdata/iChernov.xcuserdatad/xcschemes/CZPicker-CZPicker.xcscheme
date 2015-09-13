@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "34AD0E6CF6C4FF269EDB2A7B"
-               BuildableName = "TMCache.framework"
-               BlueprintName = "TMCache"
+               BlueprintIdentifier = "12DFD8C0DB770789FCBCC312"
+               BuildableName = "CZPicker.bundle"
+               BlueprintName = "CZPicker-CZPicker"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

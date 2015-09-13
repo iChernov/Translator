@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CZPicker
 
-class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate {
+class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, CZPickerViewDataSource, CZPickerViewDelegate {
 
     @IBOutlet var gradientView: GradientView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -22,6 +23,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     var translator = Translator()
     var internetConnectivityAvailable = true
     var internetReachability = Reachability.reachabilityForInternetConnection()
+    var langList = [String]()
     
     override func viewDidLoad() {
         self.setTitles()
@@ -126,7 +128,6 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
         if(internetConnectivityAvailable) {
             self.translator.detectLanguage(sender.text, customCompletion: { (err: NSError!, detectedSource: String!, confidence: Float) -> Void in
                 if(err != nil) {
-                    NSLog("Detection failed", err.localizedDescription)
                     return
                 } else {
                     self.translator.defSource = detectedSource
@@ -149,6 +150,24 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     
     
     @IBAction func changeTargetLanguage(sender: UIButton) {
+        self.inputTextField.resignFirstResponder()
+        
+        self.translator.supportedLanguages { (loadedLanguages:[String]?) -> Void in
+            if(loadedLanguages != nil) {
+                self.langList = LangUnwrapper.getLanguages(loadedLanguages!)
+                var langPicker = CZPickerView(headerTitle: "Select target language", cancelButtonTitle: "Cancel", confirmButtonTitle: "Done")
+                langPicker.dataSource = self
+                langPicker.delegate = self
+                langPicker.setSelectedRows([(self.langList as NSArray).indexOfObject(self.translator.currentTargetLanguage())]) // indexOf is implemented in Swift 2.0
+                langPicker.show()
+            } else {
+                let alert = UIAlertView()
+                alert.title = "Connection failure"
+                alert.message = "Unable to load languages list from the server. Try again later."
+                alert.addButtonWithTitle("OK")
+                alert.show()
+            }
+        }
     }
     
 // MARK: TextField delegate methods
@@ -177,7 +196,22 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
         return true
     }
     
-// MARK services methods
+// MARK: CZPickerDataSource + CZPickerDelegate
+    func numberOfRowsInPickerView(pickerView: CZPickerView!) -> Int {
+        return count(self.langList)
+    }
+    
+    
+    func czpickerView(pickerView: CZPickerView!, titleForRow row: Int) -> String! {
+        return self.langList[row]
+    }
+
+    func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int) {
+        self.translator.defTarget = LangUnwrapper.getCode(self.langList[row])
+        self.setTitles()
+    }
+    
+// MARK: services methods
     
     private func checkReachabilityStatus() {
         if(internetReachability.currentReachabilityStatus().value == NotReachable.value)

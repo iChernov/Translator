@@ -13,15 +13,20 @@ class Translator {
     
     let kAZ_KEY = "iChernovTranslator"
     let kAZ_SECRET = "h6fYU65MiUEkhoUA8kHfgz9rzDM7wpXQWPvW+PGrb+E="
+    let maxRetryCount = 3
+    
     var defSource: String?
     var defTarget = "en"
     var translator: FGTranslator!
+    var languagesList: [String]?
+    var langListLoaded = false
     
     init() {
-        //FGTranslator.flushCache() - could be needed to free memory/don't keep the search history
+        FGTranslator.flushCache()
         FGTranslator.flushCredentials()
         defSource = nil
         translator = FGTranslator(bingAzureClientId: kAZ_KEY, secret: kAZ_SECRET)
+        self.loadSupportLanguages(1, completion:nil)
     }
     
     func detectLanguage(text: String!, customCompletion: ((NSError!, String!, Float) -> Void)!)
@@ -54,9 +59,12 @@ class Translator {
         })
     }
     
-    func supportedLanguages(completion: ((NSError!, [AnyObject]!) -> Void)!) {
-        let translator = FGTranslator(bingAzureClientId: kAZ_KEY, secret: kAZ_SECRET)
-        translator.supportedLanguages(completion)
+    func supportedLanguages(completion: (([String]?) -> Void)!) {
+        if(self.langListLoaded) {
+            completion(self.languagesList)
+        } else {
+            self.loadSupportLanguages(1, completion: completion)
+        }
     }
     
     func currentSourceLanguage() -> String {
@@ -68,5 +76,28 @@ class Translator {
     
     func currentTargetLanguage() -> String {
         return NSLocale(localeIdentifier: "en").displayNameForKey(NSLocaleIdentifier, value: self.defTarget) ?? "Not defined"
+    }
+    
+    // MARK: private methods
+    
+    private func loadSupportLanguages(try: Int, completion:(([String]?) -> Void)?) {
+        if(try < self.maxRetryCount) {
+            var suppLanguagesDetector = FGTranslator(bingAzureClientId: kAZ_KEY, secret: kAZ_SECRET)
+            suppLanguagesDetector.supportedLanguages { (err: NSError!, listOfLangs:[AnyObject]!) -> Void in
+                if(err == nil) {
+                    self.languagesList = listOfLangs as? [String]
+                    self.langListLoaded = (self.languagesList != nil)
+                    if(completion != nil) {
+                        var realCompletion = completion!
+                        realCompletion(self.languagesList)
+                    }
+                } else {
+                    self.loadSupportLanguages(try + 1, completion: completion)
+                }
+            }
+        } else {
+            self.languagesList = nil
+            self.langListLoaded = false
+        }
     }
 }
