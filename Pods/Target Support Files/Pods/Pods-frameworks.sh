@@ -55,11 +55,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods/AFNetworking.framework'
   install_framework 'Pods/CZPicker.framework'
   install_framework 'Pods/FGTranslator.framework'
+  install_framework 'Pods/NKOColorPickerView.framework'
   install_framework 'Pods/TMCache.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods/AFNetworking.framework'
   install_framework 'Pods/CZPicker.framework'
   install_framework 'Pods/FGTranslator.framework'
+  install_framework 'Pods/NKOColorPickerView.framework'
   install_framework 'Pods/TMCache.framework'
 fi

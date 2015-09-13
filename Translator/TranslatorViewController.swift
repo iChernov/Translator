@@ -8,6 +8,7 @@
 
 import UIKit
 import CZPicker
+import NKOColorPickerView
 
 class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, CZPickerViewDataSource, CZPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -19,6 +20,11 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     @IBOutlet weak var toButton: UIButton!
     @IBOutlet weak var langChangeHintLabel: UILabel!
     @IBOutlet weak var translationProgressActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var colorPickerContainer: UIView!
+    @IBOutlet weak var upperColorPickerButton: UIButton!
+    @IBOutlet weak var lowerColorPickerButton: UIButton!
+    @IBOutlet weak var doneColorPickerButton: UIButton!
+    @IBOutlet weak var colorPicker: NKOColorPickerView!
     
     var translator = Translator()
     var internetConnectivityAvailable = true
@@ -27,6 +33,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     var imagePicker = UIImagePickerController()
     var topGradientColor = UIColor(red: 0.0, green: 1.0, blue: 0.1, alpha: 0.5)
     var bottomGradientColor = UIColor(red: 0.0, green: 0.1, blue: 1.0, alpha: 0.5)
+    var selectedPickerButton: UIButton?
     
     override func viewDidLoad() {
         self.setTitles()
@@ -78,7 +85,21 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     }
     
     private func presentGradientPicker() {
-        
+        self.colorPickerContainer.hidden = false
+        self.gradientView.image = nil
+        self.setupGradient()
+        self.colorPicker.didChangeColorBlock = { (color: UIColor!) -> Void in
+            if(self.selectedPickerButton != nil) {
+                if(self.selectedPickerButton! == self.upperColorPickerButton) {
+                    self.topGradientColor = color
+                    self.setupGradient()
+                }
+                if(self.selectedPickerButton! == self.lowerColorPickerButton) {
+                    self.bottomGradientColor = color
+                    self.setupGradient()
+                }
+            }
+        }
     }
     
     private func blinkGreen() {
@@ -178,6 +199,25 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
         }
     }
     
+    @IBAction func upperColorPickerButtonPressed(sender: UIButton) {
+        self.selectedPickerButton = sender
+        sender.layer.borderColor = UIColor.whiteColor().CGColor
+        sender.layer.borderWidth = 3
+        self.lowerColorPickerButton.layer.borderWidth = 0
+    }
+    
+    @IBAction func lowerColorPickerButtonPressed(sender: UIButton) {
+        self.selectedPickerButton = sender
+        sender.layer.borderColor = UIColor.whiteColor().CGColor
+        sender.layer.borderWidth = 3
+        self.upperColorPickerButton.layer.borderWidth = 0
+    }
+    
+    @IBAction func colorsSelected(sender: UIButton) {
+        self.lowerColorPickerButton.layer.borderWidth = 0
+        self.upperColorPickerButton.layer.borderWidth = 0
+        self.colorPickerContainer.hidden = true
+    }
 // MARK: TextField delegate methods
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -222,14 +262,6 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
 // MARK: UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-       /* var context: CGContextRef = UIGraphicsGetCurrentContext();
-        var imageRect = self.view.frame;
-        
-        CGContextTranslateCTM(context, 0, image.size.height);
-        CGContextScaleCTM(context, 1.0, -1.0);
-        
-        CGContextDrawImage(context, imageRect, image.CGImage);
-        CGContextRestoreGState(context);*/
         
         self.gradientView.startColor = nil
         self.gradientView.endColor = nil
