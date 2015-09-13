@@ -168,18 +168,6 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-Hc-yif" customClass="NKOColorPickerView">
                                         <rect key="frame" x="0.0" y="100" width="320" height="280"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="slider fixes the final color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p4-2k-lwK">
-                                                <rect key="frame" x="89" y="269" width="142" height="15"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="centerX" secondItem="0p4-2k-lwK" secondAttribute="centerX" id="AbB-rg-XAT"/>
-                                            <constraint firstAttribute="bottom" secondItem="0p4-2k-lwK" secondAttribute="bottom" constant="-4" id="QH1-4w-Bhm"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Va-lf-bGX" userLabel="upperButton">
                                         <rect key="frame" x="60" y="54" width="200" height="30"/>

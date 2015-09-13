@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		625D40859954735036F3E571 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634C25D751FEFF1D541C9D44 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		761475EF1BA5C01600A070F0 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761475EE1BA5C01600A070F0 /* UIGradientView.swift */; };
+		761475F21BA5D40B00A070F0 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8541BA4922F0033055D /* Translator.swift */; };
+		761475F41BA5D45500A070F0 /* LanguageCodesUnwrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761475F31BA5D45500A070F0 /* LanguageCodesUnwrapperTests.swift */; };
 		7653E8551BA4922F0033055D /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8541BA4922F0033055D /* Translator.swift */; };
 		7653E85D1BA4B3170033055D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7653E85C1BA4B3170033055D /* Reachability.m */; };
 		7653E88A1BA563200033055D /* LanguageCodesUnwrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653E8891BA563200033055D /* LanguageCodesUnwrapper.swift */; };
@@ -35,6 +37,7 @@
 		634C25D751FEFF1D541C9D44 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		742349BF3BFA14E7ACBB2790 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		761475EE1BA5C01600A070F0 /* UIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGradientView.swift; sourceTree = "<group>"; };
+		761475F31BA5D45500A070F0 /* LanguageCodesUnwrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCodesUnwrapperTests.swift; sourceTree = "<group>"; };
 		7653E8541BA4922F0033055D /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		7653E85A1BA4B3160033055D /* Translator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Translator-Bridging-Header.h"; sourceTree = "<group>"; };
 		7653E85B1BA4B3170033055D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				76965C521BA375F600283A3B /* TranslatorTests.swift */,
+				761475F31BA5D45500A070F0 /* LanguageCodesUnwrapperTests.swift */,
 				76965C501BA375F600283A3B /* Supporting Files */,
 			);
 			path = TranslatorTests;
@@ -343,6 +347,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76965C531BA375F600283A3B /* TranslatorTests.swift in Sources */,
+				761475F21BA5D40B00A070F0 /* Translator.swift in Sources */,
+				761475F41BA5D45500A070F0 /* LanguageCodesUnwrapperTests.swift in Sources */,
 				7653E88B1BA563200033055D /* LanguageCodesUnwrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

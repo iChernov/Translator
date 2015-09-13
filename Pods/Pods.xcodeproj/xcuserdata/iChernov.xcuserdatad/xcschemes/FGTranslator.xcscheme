@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F04DC27F01105C9184FBACA2"
+               BlueprintIdentifier = "A62A47AA4C44E01926B9E814"
                BuildableName = "FGTranslator.framework"
                BlueprintName = "FGTranslator"
                ReferencedContainer = "container:Pods.xcodeproj">

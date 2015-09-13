@@ -125,11 +125,12 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     }
     
     private func rotateInputField() {
-        UIView.animateWithDuration(0.4, delay: 0, options: .Autoreverse, animations: { () -> Void in
-        self.inputTextField.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI),0.0,1.0,0.0)
-        }, completion: { (completed: Bool) -> Void in
-        self.inputTextField.layer.transform = CATransform3DMakeRotation(0,0.0,1.0,0.0)
-        })
+        var rotation = CABasicAnimation(keyPath: "transform.rotation.y")
+        rotation.fromValue = 0
+        rotation.toValue = 2*M_PI
+        rotation.repeatCount = 1
+        rotation.duration = 0.9
+        self.inputTextField.layer.addAnimation(rotation, forKey: "rotation")
     }
     
 // MARK: UI interactions methods
@@ -214,6 +215,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     }
     
     @IBAction func colorsSelected(sender: UIButton) {
+        self.selectedPickerButton = nil
         self.lowerColorPickerButton.layer.borderWidth = 0
         self.upperColorPickerButton.layer.borderWidth = 0
         self.colorPickerContainer.hidden = true
@@ -257,6 +259,7 @@ class TranslatorViewController: UIViewController, UITextFieldDelegate, UIActionS
     func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int) {
         self.translator.defTarget = LangUnwrapper.getCode(self.langList[row])
         self.setTitles()
+        self.textFieldShouldReturn(self.inputTextField)
     }
     
 // MARK: UIImagePickerControllerDelegate
